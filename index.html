@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f8f4">
-  <meta name="description" content="ControllDesk Church: ferramentas para centralizar a gestão da igreja e apoiar a condução dos cultos, com armazenamento local e mensalidade única de R$ 30 a cada 30 dias.">
+  <meta name="theme-color" content="#F3F6FA">
+  <meta name="description" content="ControllDesk Church: ferramentas para centralizar a gestão da igreja, com armazenamento local ou sincronização opcional na nuvem, e modo Ajuda disponível.">
   <title>ControllDesk Church — sua igreja em boas mãos</title>
   <style>
     :root {
       color-scheme: light;
-      --paper: #f8f8f4;
-      --surface: #fff;
-      --ink: #17241f;
-      --muted: #64716a;
-      --line: #e4e9e3;
-      --green: #237a57;
-      --green-dark: #175b40;
-      --green-pale: #e7f2eb;
-      --gold: #d9a849;
-      --shadow: 0 24px 70px rgba(29, 59, 43, .12);
+      --paper: #F3F6FA;
+      --surface: #FFFFFF;
+      --surface-soft: #F7F9FC;
+      --ink: #171D1B;
+      --muted: #3F4946;
+      --line: #DEE4E1;
+      --primary: #00BFA6;
+      --primary-strong: #046B5C;
+      --secondary: #7C6BFF;
+      --coral: #FF6B6B;
+      --gold: #F5B93F;
+      --success: #22C55E;
+      --shadow: 0 24px 70px rgba(23, 29, 27, .12);
       --radius: 22px;
     }
 
@@ -42,7 +45,7 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      color: var(--green-dark);
+      color: var(--primary-strong);
       font-size: .76rem;
       font-weight: 800;
       letter-spacing: .12em;
@@ -63,8 +66,8 @@
       position: sticky;
       z-index: 10;
       top: 0;
-      border-bottom: 1px solid rgba(228, 233, 227, .8);
-      background: rgba(248, 248, 244, .92);
+      border-bottom: 1px solid rgba(190, 201, 197, .5);
+      background: rgba(243, 246, 250, .92);
       backdrop-filter: blur(14px);
     }
     .nav {
@@ -81,13 +84,13 @@
       height: 42px;
       place-items: center;
       border-radius: 14px;
-      background: var(--green);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #fff;
       font-size: 1.3rem;
       font-weight: 800;
     }
     .brand-name { font-size: 1.04rem; font-weight: 800; letter-spacing: -.035em; }
-    .brand-name span { color: var(--green); }
+    .brand-name span { color: var(--primary-strong); }
     .nav-links { display: flex; align-items: center; gap: 27px; }
     .nav-links a {
       color: var(--muted);
@@ -95,7 +98,7 @@
       font-weight: 650;
       text-decoration: none;
     }
-    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover { color: var(--primary-strong); }
     .button {
       display: inline-flex;
       min-height: 48px;
@@ -105,7 +108,7 @@
       padding: 0 21px;
       border: 1px solid transparent;
       border-radius: 12px;
-      background: var(--green);
+      background: var(--primary-strong);
       color: #fff;
       font-size: .94rem;
       font-weight: 750;
@@ -113,9 +116,9 @@
       text-decoration: none;
       transition: background .2s ease, transform .2s ease;
     }
-    .button:hover { transform: translateY(-2px); background: var(--green-dark); }
+    .button:hover { transform: translateY(-2px); background: #005045; }
     .button-light { border-color: var(--line); background: var(--surface); color: var(--ink); }
-    .button-light:hover { background: var(--green-pale); color: var(--green-dark); }
+    .button-light:hover { background: var(--surface-soft); color: var(--primary-strong); }
     .menu-toggle {
       display: none;
       width: 44px;
@@ -135,7 +138,7 @@
       width: 370px;
       height: 370px;
       border-radius: 50%;
-      background: var(--green-pale);
+      background: rgba(0, 191, 166, .1);
       content: "";
       filter: blur(2px);
       opacity: .8;
@@ -150,39 +153,39 @@
       line-height: 1.04;
       letter-spacing: -.06em;
     }
-    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero h1 em { color: var(--primary-strong); font-style: normal; }
     .hero-copy { max-width: 570px; color: var(--muted); font-size: 1.12rem; }
     .hero-copy strong { color: var(--ink); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .hero-note { display: flex; align-items: center; gap: 9px; margin-top: 22px; color: var(--muted); font-size: .86rem; }
-    .hero-note b { color: var(--green); }
+    .hero-note b { color: var(--success); }
     .dashboard {
       position: relative;
       padding: 20px;
-      border: 1px solid #e4e9e3;
+      border: 1px solid var(--line);
       border-radius: 26px;
-      background: rgba(255,255,255,.9);
+      background: rgba(255, 255, 255, .9);
       box-shadow: var(--shadow);
       transform: rotate(1deg);
     }
     .dashboard-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 2px 2px 17px; }
     .dashboard-title { font-weight: 800; }
-    .dashboard-tag { padding: 5px 10px; border-radius: 99px; background: var(--green-pale); color: var(--green-dark); font-size: .72rem; font-weight: 750; }
+    .dashboard-tag { padding: 5px 10px; border-radius: 99px; background: rgba(0, 191, 166, .12); color: var(--primary-strong); font-size: .72rem; font-weight: 750; }
     .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .dash-card { min-height: 106px; padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .dash-card { min-height: 106px; padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
     .dash-card.wide { grid-column: 1 / -1; min-height: 126px; }
     .dash-label { color: var(--muted); font-size: .75rem; }
     .dash-value { display: block; margin-top: 5px; font-size: 1.32rem; font-weight: 800; letter-spacing: -.04em; }
-    .dash-detail { color: var(--green); font-size: .72rem; font-weight: 700; }
+    .dash-detail { color: var(--primary-strong); font-size: .72rem; font-weight: 700; }
     .schedule-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; font-size: .78rem; }
     .schedule-row span:last-child { color: var(--muted); }
-    .mini-progress { height: 8px; overflow: hidden; margin-top: 12px; border-radius: 10px; background: var(--green-pale); }
-    .mini-progress span { display: block; width: 68%; height: 100%; border-radius: inherit; background: var(--green); }
+    .mini-progress { height: 8px; overflow: hidden; margin-top: 12px; border-radius: 10px; background: rgba(0, 191, 166, .12); }
+    .mini-progress span { display: block; width: 68%; height: 100%; border-radius: inherit; background: var(--primary); }
 
-    .trust-strip { border-block: 1px solid var(--line); background: #fff; }
+    .trust-strip { border-block: 1px solid var(--line); background: var(--surface); }
     .trust-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-block: 23px; }
     .trust-item { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--muted); font-size: .89rem; font-weight: 700; text-align: center; }
-    .trust-item b { color: var(--green); font-size: 1.15rem; }
+    .trust-item b { color: var(--primary-strong); font-size: 1.15rem; }
 
     .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .feature-card {
@@ -193,15 +196,15 @@
       background: var(--surface);
       transition: transform .2s ease, box-shadow .2s ease;
     }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(29, 59, 43, .08); }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(23, 29, 27, .08); }
     .feature-icon {
       display: grid;
       width: 46px;
       height: 46px;
       place-items: center;
       border-radius: 14px;
-      background: var(--green-pale);
-      color: var(--green-dark);
+      background: rgba(0, 191, 166, .12);
+      color: var(--primary-strong);
       font-size: 1.25rem;
       font-weight: 800;
     }
@@ -216,58 +219,64 @@
       gap: 28px;
       padding: 48px;
       border-radius: 28px;
-      background: var(--green-dark);
+      background: linear-gradient(135deg, #008F7E, #5B4BD6);
       color: #fff;
     }
-    .mission-card .eyebrow { color: #c3e2cf; }
+    .mission-card .eyebrow { color: rgba(255, 255, 255, .82); }
     .mission-card h2 { max-width: 720px; margin: 12px 0 0; font-size: clamp(1.8rem, 3.6vw, 3.2rem); line-height: 1.12; letter-spacing: -.045em; }
-    .mission-card .button { white-space: nowrap; background: #fff; color: var(--green-dark); }
-    .mission-card .button:hover { background: var(--green-pale); }
+    .mission-card .button { white-space: nowrap; background: #fff; color: #0B4F47; }
+    .mission-card .button:hover { background: var(--surface-soft); }
 
-    .privacy-section { background: #eef4ee; }
+    .privacy-section { background: var(--surface-soft); }
     .privacy-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 60px; }
     .privacy-grid h2 { margin: 13px 0 15px; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.12; letter-spacing: -.05em; }
-    .privacy-grid h2 span { color: var(--green); }
+    .privacy-grid h2 span { color: var(--primary-strong); }
     .privacy-grid p { color: var(--muted); }
     .privacy-list { display: grid; gap: 12px; }
-    .privacy-point { display: flex; gap: 14px; padding: 17px; border: 1px solid #dfe8df; border-radius: 16px; background: rgba(255,255,255,.75); }
-    .privacy-check { flex: 0 0 auto; color: var(--green); font-weight: 900; }
+    .privacy-point { display: flex; gap: 14px; padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.75); }
+    .privacy-check { flex: 0 0 auto; color: var(--success); font-weight: 900; }
     .privacy-point strong { display: block; margin-bottom: 2px; }
     .privacy-point span:last-child { color: var(--muted); font-size: .87rem; }
     .privacy-caveat { margin-top: 16px; font-size: .82rem; }
 
     .pricing-card {
       display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 38px;
-      max-width: 820px;
+      grid-template-columns: 1fr;
+      align-content: start;
+      gap: 20px;
+      height: 100%;
       margin: auto;
       padding: 38px;
-      border: 1px solid #d8e6db;
+      border: 1px solid var(--line);
       border-radius: 26px;
       background: var(--surface);
       box-shadow: var(--shadow);
     }
+    .pricing-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
     .pricing-card h3 { margin: 0 0 8px; font-size: 1.4rem; }
     .pricing-card p { margin: 0; color: var(--muted); }
-    .price { color: var(--green-dark); text-align: right; white-space: nowrap; }
+    .storage-details { padding: 16px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-soft); }
+    .storage-details strong { display: block; margin-bottom: 5px; }
+    .storage-details p + p { margin-top: 8px; }
+    .price { color: var(--primary-strong); }
     .price strong { font-size: clamp(2.7rem, 5vw, 3.6rem); letter-spacing: -.07em; line-height: 1; }
     .price span { color: var(--muted); font-size: .9rem; }
-    .price-per-day { display: block; margin-top: 5px; color: var(--green); font-size: .82rem; font-weight: 800; }
-    .pricing-foot { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .price-per-day { display: block; margin-top: 5px; color: var(--primary-strong); font-size: .82rem; font-weight: 800; }
+    .pricing-foot { display: flex; align-items: stretch; flex-direction: column; gap: 18px; padding-top: 22px; border-top: 1px solid var(--line); }
     .pricing-foot p { font-size: .84rem; }
+    .pricing-foot .button { width: 100%; }
+    .pricing-note { margin: 24px auto 0; color: var(--muted); text-align: center; font-size: .9rem; }
 
     .services { padding-top: 0; }
     .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .service-card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .service-card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
     .service-card h3 { margin: 0 0 7px; font-size: 1.05rem; }
     .service-card p { margin: 0; color: var(--muted); font-size: .9rem; }
     .support-note { margin: 26px 0 0; color: var(--muted); text-align: center; font-size: .9rem; }
-    .support-note a { color: var(--green-dark); font-weight: 750; }
+    .support-note a { color: var(--primary-strong); font-weight: 750; }
 
     .final-cta { padding: 0 0 90px; }
-    .final-card { padding: 48px 24px; border-radius: 26px; background: #e7f2eb; text-align: center; }
+    .final-card { padding: 48px 24px; border-radius: 26px; background: rgba(0, 191, 166, .12); text-align: center; }
     .final-card h2 { margin: 12px 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.045em; }
     .final-card p { max-width: 550px; margin: 0 auto 23px; color: var(--muted); }
     footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
@@ -284,6 +293,7 @@
       .privacy-grid { grid-template-columns: 1fr; gap: 24px; }
       .mission-card { grid-template-columns: 1fr; }
       .mission-card .button { justify-self: start; }
+      .pricing-options { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .container { width: min(100% - 32px, 520px); }
@@ -324,10 +334,8 @@
       .mission { padding-bottom: 76px; }
       .mission-card { padding: 30px 24px; }
       .mission-card .button { width: 100%; }
-      .pricing-card { grid-template-columns: 1fr; gap: 20px; padding: 27px 22px; }
-      .price { text-align: left; }
-      .pricing-foot { align-items: stretch; flex-direction: column; }
-      .pricing-foot .button { width: 100%; }
+      .pricing-options { grid-template-columns: 1fr; }
+      .pricing-card { padding: 27px 22px; }
       .final-cta { padding-bottom: 65px; }
       .footer-row { align-items: flex-start; flex-direction: column; }
     }
@@ -369,7 +377,7 @@
             <a class="button" href="#plano">Ver plano e valor <span aria-hidden="true">→</span></a>
             <a class="button button-light" href="#recursos">Explorar ferramentas</a>
           </div>
-          <p class="hero-note"><b>✓</b> Programa desktop para Windows e Linux · informações armazenadas localmente</p>
+          <p class="hero-note"><b>✓</b> Programa desktop para Windows e Linux · escolha entre armazenamento local ou sincronização opcional na nuvem</p>
         </div>
         <div class="dashboard" role="img" aria-label="Ilustração de um painel com resumo financeiro, meta e escala de culto">
           <div class="dashboard-top">
@@ -406,7 +414,7 @@
       <div class="container trust-items">
         <div class="trust-item"><b aria-hidden="true">◎</b> Gestão simples e centralizada</div>
         <div class="trust-item"><b aria-hidden="true">▣</b> Feito para uso no computador</div>
-        <div class="trust-item"><b aria-hidden="true">⌂</b> Dados mantidos localmente</div>
+        <div class="trust-item"><b aria-hidden="true">⌂</b> Dados no dispositivo ou na nuvem, à sua escolha</div>
       </div>
     </div>
 
@@ -467,13 +475,13 @@
         <div>
           <span class="eyebrow">Privacidade em primeiro lugar</span>
           <h2>Sua privacidade é um princípio, não um recurso</h2>
-          <p>O ControllDesk Church foi pensado para uso local: os registros da igreja ficam no computador em que o programa é utilizado, sem sincronização com uma nuvem do serviço.</p>
-          <p class="privacy-caveat">A proteção também depende de manter o computador e as contas de usuário seguros. Faça cópias de segurança em local protegido.</p>
+          <p>O ControllDesk Church funciona no dispositivo da igreja. Você escolhe se mantém os dados somente no computador ou se ativa a sincronização com a nuvem nas configurações.</p>
+          <p class="privacy-caveat">A proteção também depende de manter o computador e as contas de usuário seguros. Faça cópias de segurança em local protegido, independentemente da opção de armazenamento.</p>
         </div>
         <div class="privacy-list">
           <div class="privacy-point">
             <span class="privacy-check" aria-hidden="true">✓</span>
-            <div><strong>Armazenamento local</strong><span>Os dados de gestão permanecem no dispositivo da igreja; não anunciamos coleta ou sincronização remota.</span></div>
+            <div><strong>Armazenamento conforme sua escolha</strong><span>Use os dados no dispositivo ou ative a sincronização com a nuvem. O uso da nuvem é opcional e pode ser configurado pelo usuário.</span></div>
           </div>
           <div class="privacy-point">
             <span class="privacy-check" aria-hidden="true">✓</span>
@@ -492,47 +500,44 @@
         <div class="section-heading">
           <span class="eyebrow">Um valor claro, sem complicação</span>
           <h2>Um plano para todas as ferramentas</h2>
-          <p>Sem níveis diferentes para escolher: todas as funcionalidades em uma única assinatura.</p>
+          <p>Todas as funcionalidades em um único plano, com o modo Ajuda disponível para quem precisar de um intervalo.</p>
         </div>
-        <div class="pricing-card">
-          <div>
-            <h3>ControllDesk Church</h3>
-            <p>Acesso ao conjunto de ferramentas do programa para apoiar a rotina da sua igreja.</p>
-          </div>
-          <div class="price">
-            <strong>R$ 30</strong><span>,00 / mês</span>
-            <span class="price-per-day">Somente 1 real por dia</span>
-          </div>
-          <div class="pricing-foot">
-            <p>Um único plano. Entre em contato para conhecer disponibilidade, instalação e condições de acesso.</p>
-            <a class="button" href="mailto:contato@condeskbible.com?subject=ControllDesk%20Church%20-%20Plano%20de%2030%20dias">Quero conhecer o plano <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section services" id="servicos">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Além do programa</span>
-          <h2>Conte com apoio para tirar ideias do papel</h2>
-          <p>Atendimento próximo para necessidades de tecnologia da sua igreja e projetos digitais.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card">
-            <h3>Instalação e configuração</h3>
-            <p>Ajuda para preparar o programa e organizar o ambiente de uso em computadores compatíveis.</p>
+        <div class="pricing-options">
+          <article class="pricing-card">
+            <div>
+              <h3>ControllDesk Church</h3>
+              <p>Acesso ao conjunto de ferramentas do programa para apoiar a rotina da sua igreja.</p>
+            </div>
+            <div class="price">
+              <strong>R$ 32</strong><span>,90 / mês</span>
+              <span class="price-per-day">Somente 1,09 real por dia</span>
+            </div>
+            <div class="storage-details">
+              <strong>Armazenamento na nuvem (opcional)</strong>
+              <p>Você tem 300 MB gratuitos na nuvem. Acima desse limite, cada GB adicional custa R$ 7,00.</p>
+              <p>Defina o limite manualmente ou permita que o sistema ajuste o espaço automaticamente conforme seus dados aumentam.</p>
+            </div>
+            <div class="pricing-foot">
+              <p>Entre em contato para conhecer disponibilidade, instalação e condições de acesso.</p>
+              <a class="button" href="mailto:contato@condeskbible.com?subject=ControllDesk%20Church%20-%20Plano%20mensal">Quero conhecer o plano <span aria-hidden="true">→</span></a>
+            </div>
           </article>
-          <article class="service-card">
-            <h3>Ferramentas sob medida</h3>
-            <p>Desenvolvimento de soluções digitais conforme a necessidade e o contexto de cada projeto.</p>
-          </article>
-          <article class="service-card">
-            <h3>Serviços freelance</h3>
-            <p>Converse sobre uma demanda de software, melhoria de processo ou suporte técnico.</p>
+          <article class="pricing-card">
+            <div>
+              <h3>Modo Ajuda</h3>
+              <p>Se você não puder pagar a mensalidade, pode pedir uma pausa para se recuperar.</p>
+            </div>
+            <div class="price">
+              <strong>Grátis</strong>
+              <span class="price-per-day">Isenção de uma mensalidade a cada 12 meses</span>
+            </div>
+            <div class="pricing-foot">
+              <p>O modo Ajuda isenta um mês de pagamento uma vez a cada período de 12 meses.</p>
+              <a class="button button-light" href="mailto:contato@condeskbible.com?subject=ControllDesk%20Church%20-%20Modo%20Ajuda">Solicitar modo Ajuda <span aria-hidden="true">→</span></a>
+            </div>
           </article>
         </div>
-        <p class="support-note">Quer conhecer outros projetos ou apoiar o desenvolvimento? <a href="mailto:contato@condeskbible.com?subject=Projetos%20e%20apoio%20ao%20ControllDesk">Fale com o desenvolvedor</a> para receber as informações disponíveis.</p>
+        <p class="pricing-note">O projeto tem como objetivo incentivar os estudos. A receita das assinaturas contribui com os mantimentos e o desenvolvimento de projetos pessoais.</p>
       </div>
     </section>
 
