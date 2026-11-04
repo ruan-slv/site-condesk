@@ -210,6 +210,21 @@
     }
     .feature-card h3 { margin: 17px 0 6px; font-size: 1.08rem; }
     .feature-card p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .download-card {
+      display: flex;
+      min-height: 230px;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .download-card h3 { margin: 17px 0 6px; font-size: 1.2rem; }
+    .download-card p { margin: 0 0 22px; color: var(--muted); font-size: .91rem; }
+    .download-card .button { margin-top: auto; }
+    .download-status { display: inline-flex; padding: 5px 10px; border-radius: 99px; background: var(--surface-soft); color: var(--muted); font-size: .78rem; font-weight: 750; }
 
     .mission { padding: 0 0 100px; }
     .mission-card {
@@ -290,6 +305,7 @@
       .hero-copy { max-width: 680px; }
       .dashboard { max-width: 620px; width: 100%; margin-inline: auto; }
       .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .download-grid { grid-template-columns: 1fr; }
       .privacy-grid { grid-template-columns: 1fr; gap: 24px; }
       .mission-card { grid-template-columns: 1fr; }
       .mission-card .button { justify-self: start; }
@@ -354,6 +370,7 @@
       <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">☰</button>
       <nav class="nav-links" id="menu-principal" aria-label="Navegação principal">
         <a href="#recursos">Recursos</a>
+        <a href="#downloads">Downloads</a>
         <a href="#privacidade">Privacidade</a>
         <a href="#plano">Plano</a>
         <a href="#servicos">Serviços</a>
@@ -455,6 +472,32 @@
             <span class="feature-icon" aria-hidden="true">✓</span>
             <h3>Anotações e histórico</h3>
             <p>Guarde recados, acompanhe o status das tarefas e consulte registros de atividades.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="downloads">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Instale no seu computador</span>
+          <h2>Downloads por sistema operacional</h2>
+          <p>Escolha a versão compatível com o sistema operacional do seu computador.</p>
+        </div>
+        <div class="download-grid">
+          <article class="download-card">
+            <span class="feature-icon" aria-hidden="true">⊞</span>
+            <h3>Windows</h3>
+            <p>Instalador do ControllDesk Church para Windows 64 bits.</p>
+            <a class="button" href="./ControllDesk-Church-1.0.0-Setup-x64.exe" download="ControllDesk-Church-1.0.0-Setup-x64.exe">
+              Baixar para Windows <span aria-hidden="true">↓</span>
+            </a>
+          </article>
+          <article class="download-card">
+            <span class="feature-icon" aria-hidden="true">🐧</span>
+            <h3>Linux</h3>
+            <p>O instalador para Linux estará disponível em breve.</p>
+            <span class="download-status">Em breve</span>
           </article>
         </div>
       </div>
